@@ -1,0 +1,18 @@
+{
+  "name": "Natural",
+  "description": "Subtle detail and balanced highlights.",
+  "settings": {
+    "adjustments": {
+      "highlights": -12,
+      "shadows": 6,
+      "texture": 8,
+      "clarity": 4,
+      "vibrance": 5
+    },
+    "sharpening": {
+      "enabled": true,
+      "amount": 25,
+      "radius": 0.6
+    }
+  }
+}

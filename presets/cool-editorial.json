@@ -1,0 +1,22 @@
+{
+  "name": "Cool Editorial",
+  "description": "Cooler color with crisp, restrained contrast.",
+  "settings": {
+    "adjustments": {
+      "temperature": -7,
+      "contrast": 12,
+      "highlights": -15,
+      "shadows": 4,
+      "blacks": -6,
+      "saturation": -8,
+      "texture": 12,
+      "clarity": 10,
+      "dehaze": 5
+    },
+    "sharpening": {
+      "enabled": true,
+      "amount": 35,
+      "radius": 0.65
+    }
+  }
+}

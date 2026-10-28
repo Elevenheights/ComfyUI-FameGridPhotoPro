@@ -242,3 +242,23 @@ validation remains to be done before claiming support for those editions.
 RawTherapee remains separately distributed under its own GPL license/notices;
 this adapter invokes its CLI and writes PP3 profiles rather than embedding its
 processing code.
+
+## Presets (0.3.0)
+
+The editor includes **crispy**, **Natural**, **Soft Portrait**, **Warm Film**, and
+**Cool Editorial**. crispy preserves the exact Photo Pro configuration from the
+FAMEGRID ULTRAREAL Reference to Image workspace. The other four are starting
+points; adjust them for your photo and lighting.
+
+Choose a preset, then click **Apply preset**. Undo restores the previous settings.
+To keep your own settings, enter a name and click **Save preset**. Custom presets
+persist in this browser for this ComfyUI address; they are not server files and
+clearing browser site data removes them. Use **Export preset** to download the
+current settings as JSON, and **Import preset** to add a backup or shared preset.
+The five bundled JSON files are also in `presets/`.
+
+Presets include all Photo Pro adjustments and export settings, including color
+mixer and skin tone selection. They contain no source image, preview mask, or
+ComfyUI output path. Applying to the node stores the settings in the workflow;
+run the workflow again to update the output. Presets can be saved and applied
+before loading a photo. Existing node settings are kept until you apply a preset.

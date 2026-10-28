@@ -1,0 +1,111 @@
+{
+  "name": "crispy",
+  "description": "Exact settings from the Reference to Image workspace.",
+  "settings": {
+    "adjustments": {
+      "exposure": 0.3,
+      "contrast": 0,
+      "highlights": -25,
+      "shadows": 0,
+      "whites": -2,
+      "blacks": 0,
+      "temperature": 0,
+      "tint": 0,
+      "vibrance": 0,
+      "saturation": 0,
+      "texture": 28,
+      "clarity": 30,
+      "dehaze": 40
+    },
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    "rotation": 0,
+    "resize": null,
+    "format": "png",
+    "quality": 95,
+    "bitDepth": 8,
+    "sharpening": {
+      "enabled": true,
+      "method": "usm",
+      "amount": 60,
+      "radius": 0.75,
+      "threshold": 20,
+      "haloControl": true,
+      "iterations": 20,
+      "damping": 20
+    },
+    "grain": {
+      "enabled": false,
+      "strength": 25,
+      "iso": 400,
+      "gamma": 1
+    },
+    "colorMixer": {
+      "enabled": false,
+      "channels": {
+        "red": {
+          "hue": 0,
+          "saturation": 0,
+          "lightness": 0
+        },
+        "orange": {
+          "hue": 0,
+          "saturation": 0,
+          "lightness": 0
+        },
+        "yellow": {
+          "hue": 0,
+          "saturation": 0,
+          "lightness": 0
+        },
+        "green": {
+          "hue": 0,
+          "saturation": 0,
+          "lightness": 0
+        },
+        "aqua": {
+          "hue": 0,
+          "saturation": 0,
+          "lightness": 0
+        },
+        "blue": {
+          "hue": 0,
+          "saturation": 0,
+          "lightness": 0
+        },
+        "purple": {
+          "hue": 0,
+          "saturation": 0,
+          "lightness": 0
+        },
+        "magenta": {
+          "hue": 0,
+          "saturation": 0,
+          "lightness": 0
+        }
+      }
+    },
+    "skinTone": {
+      "enabled": false,
+      "hue": 0,
+      "saturation": 0,
+      "lightness": 0,
+      "center": 30,
+      "width": 30,
+      "feather": 15,
+      "minSaturation": 0.08,
+      "minLightness": 0.02,
+      "maxLightness": 0.98,
+      "region": {
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 1
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Soft Portrait",
+  "description": "Gentle contrast with softer skin detail.",
+  "settings": {
+    "adjustments": {
+      "exposure": 0.1,
+      "highlights": -18,
+      "shadows": 10,
+      "contrast": -5,
+      "texture": -12,
+      "clarity": -6,
+      "vibrance": 4
+    },
+    "sharpening": {
+      "enabled": true,
+      "amount": 18,
+      "radius": 0.5
+    }
+  }
+}

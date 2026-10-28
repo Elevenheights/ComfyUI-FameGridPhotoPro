@@ -1,0 +1,20 @@
+{
+  "name": "Warm Film",
+  "description": "Warm color, lifted shadows, restrained grain.",
+  "settings": {
+    "adjustments": {
+      "temperature": 10,
+      "highlights": -20,
+      "shadows": 8,
+      "blacks": 10,
+      "saturation": -6,
+      "texture": 4
+    },
+    "grain": {
+      "enabled": true,
+      "strength": 12,
+      "iso": 400,
+      "gamma": 1
+    }
+  }
+}
