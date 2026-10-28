@@ -17,6 +17,7 @@ from contextlib import contextmanager
 import numpy as np
 from PIL import Image, ImageCms
 import tifffile
+from . import color_tools
 
 VERSION = "5.13"
 MAX_PIXELS = 16_777_216
@@ -122,7 +123,8 @@ def settings(raw=None):
     if fmt not in ("png", "jpeg", "webp", "tiff") or depth not in (8, 16, 32) or isinstance(depth, bool) or (depth == 32 and fmt != "tiff") or (fmt in ("jpeg", "webp") and depth != 8):
         raise ValueError("Choose 8-bit PNG/JPEG/WebP/TIFF, 16-bit PNG/TIFF, or 32-bit float TIFF.")
     quality = number(raw.get("quality", 95), 50, 100, "quality", True)
-    return dict(adjustments=a, crop=crop, rotation=rotation, resize=resize, sharpening=sharp, grain=grain, format=fmt, bitDepth=depth, quality=quality)
+    mixer, skin = color_tools.validate(raw, number)
+    return dict(adjustments=a, crop=crop, rotation=rotation, resize=resize, sharpening=sharp, grain=grain, colorMixer=mixer, skinTone=skin, format=fmt, bitDepth=depth, quality=quality)
 
 
 def jsround(value):
@@ -246,7 +248,7 @@ def prepare(rgb, raw=None, alpha=None, preview=False, detail=False):
     return to_srgb(straight), np.clip(rgba[..., 3], 0, 1)
 
 
-def render(rgb, raw=None, alpha=None, preview=False, detail=False, cancel=lambda: None):
+def render(rgb, raw=None, alpha=None, preview=False, detail=False, cancel=lambda: None, mask_preview=False):
     s = settings(raw)
     rgb, alpha = prepare(rgb, s, alpha, preview, detail)
     h, w = rgb.shape[:2]
@@ -256,6 +258,7 @@ def render(rgb, raw=None, alpha=None, preview=False, detail=False, cancel=lambda
         input_path = Path(directory) / "input.tif"
         tifffile.imwrite(input_path, padded, photometric="rgb", metadata=None, extratags=[(34675, "B", len(color_profile()), color_profile(), False)])
         result = run_native(directory, input_path, s, cancel)[:h, :w, :3]
+    result = color_tools.apply(result, alpha, s['colorMixer'], s['skinTone'], mask_preview, cancel)
     return np.ascontiguousarray(result, dtype=np.float32), np.ascontiguousarray(alpha, dtype=np.float32)
 
 

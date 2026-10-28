@@ -1,6 +1,6 @@
 [project]
 name = "comfyui-famegrid-photo-pro"
-version = "0.1.0"
+version = "0.2.0"
 description = "FameGrid Photo Pro: a live RawTherapee photo finishing studio inside ComfyUI"
 requires-python = ">=3.10"
 license = {text = "LicenseRef-Proprietary"}

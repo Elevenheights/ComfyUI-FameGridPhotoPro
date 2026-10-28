@@ -146,6 +146,37 @@ Slider previews debounce for 350 ms and always return the full output resolution
 Edits retain zoom and pan; inspection never crops the image. Temporary sources
 are released when the editor closes, with bounded caches and expiry as a fallback.
 
+## Color Mixer and Skin Tone (0.2.0)
+
+Both sections start disabled so existing workflows and presets keep their
+previous appearance. They use float32 HSL processing after the RawTherapee
+develop step; they are not RawTherapee HSV curves.
+
+**Color Mixer:** enable it, select red, orange, yellow, green, aqua, blue, purple
+or magenta, then adjust that channel's Hue, Saturation and Lightness. Channels
+blend into neighboring hues. Neutral grays stay protected. Hue spans up to 30
+degrees either way; saturation and lightness move toward their lower/upper
+limits. **Reset selected color** only resets that channel.
+
+**Skin Tone:** enable it and use Hue, Saturation and Lightness for the selected
+area. Turn on **Show skin selection mask** to inspect it: white is selected,
+black is protected, gray is partial strength. Refine Target hue, Hue range,
+Color feather, minimum saturation and the lightness limits. To protect similar
+colors elsewhere, reduce the selection area's Width/Height, then position it
+with Left/Top percentages. Area edges are feathered automatically. Coordinates
+refer to the current cropped/rotated output image.
+
+This is an adjustable color-and-area selection, not automatic skin recognition.
+Similar-colored clothing inside the selected area can still be selected; check
+the mask before applying. Mask view is preview-only: **Apply to node**, native
+node execution and image exports use the color photograph, never the grayscale
+selection preview. **Reset skin tone** restores the selection and adjustments.
+
+The desktop app and ComfyUI node share the new settings JSON. Older presets get
+neutral defaults. The separate Creator Studio app does not expose these new
+controls yet. Restart ComfyUI and refresh the browser after updating; an older
+running backend cannot apply the new tools until restarted.
+
 ## Precision and saving
 
 IMAGE outputs are float32 **sRGB-encoded**, matching ComfyUI's IMAGE convention;

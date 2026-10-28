@@ -68,8 +68,8 @@ class FameGridPhotoPro:
     FUNCTION = "develop"
     RETURN_TYPES = ("IMAGE", "MASK")
     RETURN_NAMES = ("image", "transparency")
-    DESCRIPTION = "FameGrid Photo Pro: light, color, texture, grain and sharpening. Click Edit photo for live preview."
-    SEARCH_ALIASES = ["FameGrid Color Pro", "Camera Raw", "Photo Develop"]
+    DESCRIPTION = "Light, color, HSL Color Mixer, masked Skin Tone, grain and sharpening. Click Adjust Settings/Edit Photo for live preview."
+    SEARCH_ALIASES = ["FameGrid Color Pro", "Camera Raw", "Photo Develop", "HSL", "Skin Tone"]
 
     @classmethod
     def INPUT_TYPES(cls):

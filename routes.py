@@ -70,8 +70,8 @@ async def engine_status(request):
     try:
         if request.query.get("refresh"): find_engine.cache_clear()
         await asyncio.to_thread(find_engine)
-        return respond(dict(ready=True, version="5.13", features=dict(directLibraryImport=True, directLibrarySave=False)))
-    except Exception as error: return respond(dict(ready=False, version="5.13", message=str(error)))
+        return respond(dict(ready=True, version="5.13", features=dict(directLibraryImport=True, directLibrarySave=False, colorTools=True)))
+    except Exception as error: return respond(dict(ready=False, version="5.13", message=str(error), features=dict(colorTools=True)))
 
 
 @routes.post(BASE + "/source")
@@ -164,7 +164,9 @@ async def develop(request):
     try:
         source_id = request.match_info["source_id"]; entry = CACHE.get(source_id)
         body = await request.json(); config = settings(body.get("settings")); preview, detail = body.get("preview") is True, body.get("detail") is True
-        version = json.dumps([config, detail], sort_keys=True)
+        mask_preview = body.get('mask_preview') is True
+        if mask_preview and not preview: return respond(dict(error='Mask view is preview-only.'),400)
+        version = json.dumps([config, detail, mask_preview], sort_keys=True)
         cached = entry["previews"].get(version) if preview and not detail else None
         fmt = "png" if detail else "webp" if preview else config["format"]
         depth = 8 if preview else config["bitDepth"]
@@ -182,7 +184,7 @@ async def develop(request):
                                 if CACHE.total_size() > CACHE.limit: entry.pop("proxy", None)
                     else: pixels, opacity = proxy[1:]
                     native_config = dict(config, crop=dict(x=0, y=0, width=1, height=1), rotation=0, resize=None)
-                rgb, alpha = render(pixels, native_config, opacity, preview=preview, detail=detail, cancel=cancel)
+                rgb, alpha = render(pixels, native_config, opacity, preview=preview, detail=detail, cancel=cancel, mask_preview=mask_preview)
                 data = export_bytes(rgb, alpha, fmt, depth, 92 if preview else config["quality"])
                 hist = [np.histogram(np.rint(np.clip(rgb[..., c], 0, 1)*255)[alpha > 0], bins=256, range=(0, 256))[0].tolist() for c in range(3)]
                 return data, hist
