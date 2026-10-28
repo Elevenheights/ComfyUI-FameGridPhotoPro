@@ -1,6 +1,6 @@
 {
   "name": "crispy",
-  "description": "Exact settings from the Reference to Image workspace.",
+  "description": "Reference to Image settings with RL deconvolution sharpening at amount 60.",
   "settings": {
     "adjustments": {
       "exposure": 0.3,
@@ -30,7 +30,7 @@
     "bitDepth": 8,
     "sharpening": {
       "enabled": true,
-      "method": "usm",
+      "method": "rld",
       "amount": 60,
       "radius": 0.75,
       "threshold": 20,

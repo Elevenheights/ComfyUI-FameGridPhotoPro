@@ -246,8 +246,9 @@ processing code.
 ## Presets (0.3.0)
 
 The editor includes **crispy**, **Natural**, **Soft Portrait**, **Warm Film**, and
-**Cool Editorial**. crispy preserves the exact Photo Pro configuration from the
-FAMEGRID ULTRAREAL Reference to Image workspace. The other four are starting
+**Cool Editorial**. crispy uses the Photo Pro configuration from the
+FAMEGRID ULTRAREAL Reference to Image workspace, with sharpening set to
+RL deconvolution (advanced), enabled at amount 60. The other four are starting
 points; adjust them for your photo and lighting.
 
 Choose a preset, then click **Apply preset**. Undo restores the previous settings.
