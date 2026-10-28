@@ -1,0 +1,10 @@
+[project]
+name = "comfyui-famegrid-photo-pro"
+version = "0.1.0"
+description = "FameGrid Photo Pro: a live RawTherapee photo finishing studio inside ComfyUI"
+requires-python = ">=3.10"
+license = {text = "LicenseRef-Proprietary"}
+dependencies = ["numpy>=1.24", "Pillow>=10.0", "tifffile>=2023.7.10", "pypng>=0.20220715.0"]
+
+[tool.comfy]
+DisplayName = "FameGrid Photo Pro"
